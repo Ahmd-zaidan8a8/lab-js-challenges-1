@@ -203,17 +203,18 @@ function greatestProduct(matrix) {
     else if(matrix[0][0] === 1) return matrix[0][0];
   }
   else {
-    let greadtesAdjacent = 0;
-    for (let i = 0; i < matrix.length ; i++){
-          for(let j = 0 ; j < matrix[i].length ; j++){
+    let greatestAdj = 0;
+    for (let i = 0; i < matrix.length - 3 ; i++){
+          for(let j = 0 ; j < matrix[i].length - 3 ; j++){
             if(matrix[i][j] !== matrix[i][j+1]){
               let horizontalAdj = matrix[i][j] * matrix[i][j+1] * matrix[i][j+2] * matrix[i][j+3]; 
-              let verticalAdj = matrix[i][j] * matrix[i+1][j] * matrix[i+2][j] * matrix[i+3][j]; 
-              greadtesAdjacent = horizontalAdj > verticalAdj ? horizontalAdj : verticalAdj;
+              let verticalAdj = matrix[i][j] * matrix[i+1][j] * matrix[i+2][j] * matrix[i+3][j];
+              const max = Math.max(horizontalAdj,verticalAdj);
+              greatestAdj = greatestAdj > max ? greatestAdj : max;
             }  
       }
     }
-    return greadtesAdjacent;
+    return greatestAdj;
   }
 }
 
